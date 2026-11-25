@@ -1,0 +1,100 @@
+.panel {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(16px, 2vw, 24px);
+  border: 1px solid #dce9f1;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px -24px rgba(14, 50, 77, .28);
+  color: #17324d;
+}
+.headingRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.title { margin: 0; font-size: 15px; line-height: 1.5; font-weight: 750; color: #17324d; }
+.subtitle { margin: 3px 0 0; font-size: 13px; line-height: 1.5; color: #536a80; }
+.count {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 5px 11px;
+  background: #e6f6f2;
+  color: #16655e;
+  font-size: 12px;
+  font-weight: 700;
+}
+.controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(160px, 195px) auto;
+  align-items: stretch;
+  gap: 12px;
+  min-width: 0;
+}
+.searchField, .filterField { min-width: 0; position: relative; display: block; }
+.leadingIcon { position: absolute; top: 50%; left: 14px; transform: translateY(-50%); color: #59748a; pointer-events: none; z-index: 1; }
+.searchField input, .filterField select {
+  box-sizing: border-box;
+  appearance: none;
+  width: 100%;
+  height: 46px;
+  min-height: 46px;
+  margin: 0;
+  border: 1px solid #cedee9;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #17324d;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.3;
+  outline: none;
+  box-shadow: none;
+}
+.searchField input { padding: 0 14px 0 44px; }
+.searchField input::placeholder { color: #647b90; opacity: 1; }
+.filterField select {
+  cursor: pointer;
+  padding: 0 35px 0 41px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2359748a' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 11px center;
+  background-repeat: no-repeat;
+}
+.searchField input:focus-visible, .filterField select:focus-visible, .exportButton:focus-visible { outline: 3px solid #80d9d1; outline-offset: 2px; }
+.exportButton {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  min-height: 46px;
+  padding: 0 17px;
+  border: 1px solid #bbd8e5;
+  border-radius: 12px;
+  background: #f5fbfd;
+  color: #173f5b;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+.exportButton:hover:not(:disabled) { background: #e5f5fa; border-color: #6caec3; }
+.exportButton:disabled { cursor: not-allowed; opacity: .55; background: #f5f7f9; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+@media (max-width: 760px) {
+  .controls { grid-template-columns: minmax(0, 1fr) minmax(155px, .7fr); }
+  .searchField { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .headingRow { flex-wrap: wrap; }
+  .controls { grid-template-columns: minmax(0, 1fr); }
+  .searchField { grid-column: auto; }
+  .exportButton { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .exportButton { transition: none; } }

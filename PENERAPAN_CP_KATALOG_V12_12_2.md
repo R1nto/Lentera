@@ -1,0 +1,2 @@
+# V12.12.2 — perluasan katalog
+Jalankan 027 setelah 026. 128 entri tambahan berupa ringkasan navigasi yang perlu ditinjau guru, tidak lengkap per elemen. PABP dibedakan per agama, seni per cabang. Bahasa Inggris dan IPAS hanya B/C, KKA C. Muatan lokal harus mengikuti dokumen daerah/sekolah. Seluruh enam cabang agama memiliki entri fase A–C, namun belum lengkap semua elemen; tidak ada klaim seluruh kurikulum lengkap. Sumber agama 020/2026 adalah salinan pihak ketiga, perubahan dikonfirmasi Kemendikdasmen. Tidak ada panggilan AI tambahan.
