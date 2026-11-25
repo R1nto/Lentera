@@ -1,5 +1,2 @@
-import { PrincipalWorkspace } from '@/components/layout/principal-workspace';
-
-export default function Page() {
-  return <PrincipalWorkspace view='reports' />;
-}
+import { SchoolAnalytics } from '@/components/layout/school-analytics';
+export default function Page() { return <SchoolAnalytics mode="reports" />; }
