@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createSupabaseAdmin } from '@supabase/supabase-js';
 
 export async function POST(request: NextRequest) {
-  let admin: ReturnType<typeof createSupabaseAdmin> | null = null;
+  let admin: ReturnType<typeof createSupabaseAdmin<any>> | null = null;
   let rollbackUserId: string | null = null;
 
   const rollback = async () => {
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Konfigurasi server belum lengkap. Periksa SUPABASE_SECRET_KEY.' }, { status: 503 });
     }
 
-    admin = createSupabaseAdmin(url, secretKey, {
+    admin = createSupabaseAdmin<any>(url, secretKey, {
       auth: { autoRefreshToken: false, persistSession: false, detectSessionInUrl: false },
     });
 

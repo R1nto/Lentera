@@ -2,7 +2,7 @@ import { rubricWarnings } from '@/lib/module-rubric';
 import { cpSubjectMatches } from '@/lib/cp-catalog-match';
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient, createServiceClient } from '@/lib/supabase/server';
-import { createAIProvider } from '@/services/ai/ai-provider';
+import { createAIProvider, type ModuleGenerationInput } from '@/services/ai/ai-provider';
 import { getServerAISettings } from '@/lib/admin/ai-settings';
 
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -208,7 +208,7 @@ export async function POST(request: NextRequest) {
       curriculumReferenceKind: schoolDevelopment ? "school_development" : "curriculum_reference",
       officialCpText: verifiedCatalogCp?.cp_excerpt || String(official_cp_text || '').trim(),
       officialCpSource: verifiedCatalogCp ? `${verifiedCatalogCp.source_title} (${verifiedCatalogCp.source_version})` : String(official_cp_source || '').trim(),
-    };
+    } satisfies ModuleGenerationInput;
 
     // Call AI
     stage = 'ai';

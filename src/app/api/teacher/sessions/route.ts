@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     if (assignment.error || classResult.error || subjectResult.error || moduleResult.error) throw assignment.error || classResult.error || subjectResult.error || moduleResult.error;
     if (moduleId && (!moduleResult.data || moduleResult.data.teacher_id !== user.id || moduleResult.data.school_id !== profile.school_id || moduleResult.data.class_id !== classId || moduleResult.data.subject_id !== subjectId)) return deny('Modul Ajar tidak sesuai penugasan, sekolah, kelas, atau mata pelajaran.', 403);
     const allowedAssignment = (assignment.data || []).some((row) => row.subject_id === null || row.subject_id === subjectId);
-    if (!allowedAssignment || classResult.data?.school_id !== profile.school_id) return deny('Kelas atau mata pelajaran bukan bagian dari penugasan Guru.', 403);
+    if (!allowedAssignment || !classResult.data || classResult.data.school_id !== profile.school_id) return deny('Kelas atau mata pelajaran bukan bagian dari penugasan Guru.', 403);
     if (phaseForGrade(String(classResult.data.grade)) !== phase) return deny('Pembelajaran SD hanya boleh untuk kelas 1–6 dan fase A, B, atau C.', 400);
     if (!subjectResult.data) return deny('Mata pelajaran tidak ditemukan.', 400);
     if (subjectResult.data.phase?.length && !subjectResult.data.phase.includes(phase as never)) return deny('Mata pelajaran ini tidak tersedia untuk fase kelas yang dipilih.', 400);

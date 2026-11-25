@@ -109,7 +109,7 @@ export default function GuruLaporanPage() {
   const updateDecision = (studentId: string, indicatorId: string, patch: Partial<TeacherDecision>) => {
     setDecisions(previous => ({ ...previous, [studentId]: {
       ...previous[studentId],
-      [indicatorId]: { status: '', criterion: '', note: '', ...previous[studentId]?.[indicatorId], ...patch },
+      [indicatorId]: { ...(previous[studentId]?.[indicatorId] ?? { status: '', criterion: '', note: '' }), ...patch },
     } }));
   };
   const selectedSession = sessions.find((session) => session.id === selectedSessionId);

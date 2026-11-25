@@ -30,7 +30,7 @@ export function postGeminiInteraction(
       },
       // Node https.request does not impose Undici's default 10s connect timeout.
       agent: false,
-      autoSelectFamily: true,
+      // Node 20+ enables automatic address-family selection by default.
     }, (res) => {
       const chunks: Buffer[] = [];
       let bytes = 0;

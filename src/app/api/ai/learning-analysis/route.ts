@@ -90,6 +90,7 @@ export async function POST(request: NextRequest) {
       .select(`
         id,
         question,
+        purpose,
         reflection_answers!inner(answer, is_draft)
       `)
       .eq('learning_session_id', session.id)

@@ -43,7 +43,7 @@ export async function loadReportChoices(
   const activities = (activitiesQuery.data || []).filter((activity) => session.module_id
     ? activity.module_id === session.module_id
     : activity.learning_session_id === session.id || (activity.learning_indicator_ids || [])
-      .some(id => curriculum.some(ind => ind.id === id)));
+      .some((id: string) => curriculum.some(ind => ind.id === id)));
   const activityIds = activities.map(activity => activity.id);
   const publications = activityIds.length
     ? await db.from('published_assessments').select('assessment_activity_id,student_id')
