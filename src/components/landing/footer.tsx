@@ -1,3 +1,4 @@
+import { CopyrightYear } from './copyright-year';
 import Link from 'next/link';
 import { ArrowUpRight, BookOpenCheck, ShieldCheck, Sparkles } from 'lucide-react';
 import { BrandMark } from '@/components/brand/brand-mark';
@@ -62,7 +63,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex flex-col gap-3 border-t border-white/20 pt-6 text-[11px] font-medium text-white/75 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} LENTERA. Terangi Pembelajaran, Tumbuhkan Potensi.</p>
+          <p>© <CopyrightYear /> LENTERA. Terangi Pembelajaran, Tumbuhkan Potensi.</p>
           <p>Platform pendukung pembelajaran — keputusan pedagogis tetap pada guru.</p>
         </div>
       </div>

@@ -67,12 +67,18 @@ export default function GuruAssessmentInputPage() {
     module_id: '',
     learning_objective_id: '',
     type: 'formatif',
-    date: (() => { const now = new Date(); return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`; })(),
+    date: '',
     max_score: '100',
     minimum_score: '',
     achievement_threshold: '',
   });
   const [selectedIndicatorIds, setSelectedIndicatorIds] = React.useState<string[]>([]);
+
+  React.useEffect(() => {
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    setForm(current => current.date ? current : { ...current, date: today });
+  }, []);
 
   React.useEffect(() => {
     let active = true;

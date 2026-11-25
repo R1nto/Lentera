@@ -225,7 +225,7 @@ function CreateSessionContent({ data }: { data: CreateSessionPageData }) {
     subject_id: '',
     module_id: '',
     phase: 'A',
-    date: new Date().toISOString().split('T')[0],
+    date: '',
     duration_minutes: 90,
     learning_outcome_ids: [] as string[],
     learning_objective_ids: [] as string[],
@@ -236,6 +236,12 @@ function CreateSessionContent({ data }: { data: CreateSessionPageData }) {
     media: '',
     assessment_plan: '',
   });
+
+  React.useEffect(() => {
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    setFormData(current => current.date ? current : { ...current, date: today });
+  }, []);
 
   React.useEffect(() => {
     let active = true;
